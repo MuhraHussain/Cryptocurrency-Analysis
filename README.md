@@ -20,17 +20,17 @@ This project focuses on analyzing daily price trends of the top 23 cryptocurrenc
 Source: Proprietary dataset consisting of 23 Excel files, one for each cryptocurrency.
 
 Columns:
-- Ticker: Cryptocurrency symbol (e.g., BTC, ETH).
-- Date: Date of the price entry.
-- Open: Opening price on the given day.
-- High: Highest price of the day.
-- Low: Lowest price of the day.
-- Close: Closing price of the day.
+- **Ticker**: Cryptocurrency symbol (e.g., BTC, ETH).
+- **Date**: Date of the price entry.
+- **Open**: Opening price on the given day.
+- **High**: Highest price of the day.
+- **Low**: Lowest price of the day.
+- **Close**: Closing price of the day.
 
 ## Tools
 
-**Python:** Pandas for data cleaning and manipulation in jupyter notebook, Matplotlib/Seaborn for exploratory data analysis.
-**Tableau:** Interactive dashboards and visualizations.
+- **Python:** Pandas for data cleaning and manipulation in jupyter notebook, Matplotlib/Seaborn for exploratory data analysis.
+- **Tableau:** Interactive dashboards and visualizations.
 
 ## Data Preparation
 
