@@ -8,37 +8,45 @@ Cryptocurrency Prices Analysis: Data Preparation, Analysis, and Interactive Visu
 - [Tools](#tools)
 - [Data Preparation](#data-preparation)
 - [Data Analysis](#data-analysis)
-- [Results and Insights](#results-and-insights)
 - [Visualization](#visualization)
+
   
 ## Project Overview
 
-This project focuses on analyzing daily price trends of the top 23 cryptocurrencies by market cap. Using Python and Tableau, the goal is to uncover insights about price volatility, trends, and other patterns that can help understand the dynamics of the cryptocurrency market.
+This project focuses on analyzing daily prices of the top 23 cryptocurrencies by market cap. Using Python and Tableau, the goal is to uncover insights about price volatility, trends, and other patterns that can help understand the dynamics of the cryptocurrency market using a dynamic dashboard displaying each coin with its corresponding values in a comprehensive visual.
+
 
 ## Data Sources
 
-Source: Proprietary dataset consisting of 23 Excel files, one for each cryptocurrency.
+Source: "Cryptocurrency Historical Prices" folder consisting of 23 .csv files, one for each cryptocurrency, found on Kaggle. The cleaned file is "crypto_daily.csv", containing all separate 23 files in one.
+
 
 Columns:
-- **Ticker**: Cryptocurrency symbol (e.g., BTC, ETH).
-- **Date**: Date of the price entry.
-- **Open**: Opening price on the given day.
-- **High**: Highest price of the day.
-- **Low**: Lowest price of the day.
-- **Close**: Closing price of the day.
+
+- **SNo**: Serial Number
+- **Name**: Cryptocurrency name (e.g., Bitcoin, Ethereum)
+- **Symbol**: Cryptocurrency symbol (e.g., BTC, ETH)
+- **Date**: Date of the price entry
+- **Open**: Opening price of the day
+- **High**: Highest price of the day
+- **Low**: Lowest price of the day
+- **Close**: Closing price of the day
+- **Volume**: Volume of transactions of the day
+- **Market Cap**: Market capitalization in USD
+
 
 ## Tools
 
-- **Python:** Pandas for data cleaning and manipulation in jupyter notebook, Matplotlib/Seaborn for exploratory data analysis.
-- **Tableau:** Interactive dashboards and visualizations.
+- **Python:** Pandas for data cleaning and manipulation in jupyter notebook.
+- **Tableau:** Interactive dashboard for visualization.
+
 
 ## Data Preparation
 
-- Combined the 23 individual Excel files into a single DataFrame for analysis.
+- Combined the 23 individual .csv files into a single DataFrame for analysis.
 - Managed missing date values by ensuring chronological consistency.
 - Standardized formats and ensured data integrity.
 
-## Exploratory Data Analysis
 
 ## Data Analysis
 
@@ -47,6 +55,7 @@ Importing necessary libraries
 ```python
 import pandas as pd
 ```
+
 
 Reading CSV files for each cryptocurrency into separate dataframes, each file contains historical price data for a specific cryptocurrency
 
@@ -76,17 +85,22 @@ df_wbtc = pd.read_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Cryptocurrency
 df_xrp = pd.read_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Cryptocurrency Historical Prices\coin_XRP.csv")
 ```
 
+
 List of all dataframes
 
 ```python
 dfs = [df_aave, df_bnb, df_btc, df_ada, df_link, df_atom, df_cro, df_doge, df_eos, df_eth, df_miota, df_ltc, df_xmr, df_xem, df_dot, df_sol, df_xlm, df_usdt, df_trx, df_uni, df_usdc, df_wbtc, df_xrp]
 ```
+
+
 Ensure the 'Date' column is in datetime format for all dataframes
 
 ```python
 for df in dfs:
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce') # Coerce invalid dates to NaT (Not a Time)
 ```
+
+
 Iterate through the list of dataframes and display data types for each
 
 ```python
@@ -418,6 +432,7 @@ Output:
     Volume              float64
     Marketcap           float64
     dtype: object
+
     
 Combine all 23 dataframes into a single dataframe using pd.concat
 
@@ -425,6 +440,7 @@ Combine all 23 dataframes into a single dataframe using pd.concat
 dfs = pd.concat([df_aave, df_bnb, df_btc, df_ada, df_link, df_atom, df_cro, df_doge, df_eos, df_eth, df_miota, df_ltc, df_xmr, df_xem, df_dot, df_sol, df_xlm, df_usdt, df_trx, df_uni, df_usdc, df_wbtc, df_xrp]
 )
 ```
+
 
 Get unique values in the "Symbol" column
 
@@ -437,6 +453,7 @@ Output:
     array(['AAVE', 'BNB', 'BTC', 'ADA', 'LINK', 'ATOM', 'CRO', 'DOGE', 'EOS',
            'ETH', 'MIOTA', 'LTC', 'XMR', 'XEM', 'DOT', 'SOL', 'XLM', 'USDT',
            'TRX', 'UNI', 'USDC', 'WBTC', 'XRP'], dtype=object)
+
 
 Display dataframes
 
@@ -612,6 +629,7 @@ Output:
 </div>
 ```
 
+
 Check for missing values in the entire dataframe
 
 ```python
@@ -633,6 +651,7 @@ Output:
     Volume       0
     Marketcap    0
     dtype: int64
+
     
 Save data and export into csv file for visualization
 
@@ -640,11 +659,7 @@ Save data and export into csv file for visualization
 dfs.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\crypto_daily.csv", index=False)
 ```
 
-## Results and Insights
-
-- [Bitcoin (BTC)] consistently maintained its dominance with the highest average closing price of [value].
-- Stablecoins like [USDT, USDC] showed minimal price variation, reflecting their pegged nature.
 
 ## Visualization
 
-Interactive Tableau Dashboard can be found here
+Interactive Tableau Dashboard can be found here: https://public.tableau.com/views/Cryptocurrency_analysis/CryptocurrencyDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
